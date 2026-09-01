@@ -2,6 +2,7 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
+import BrandMarquee from './components/BrandMarquee'
 import Footer from './components/Footer'
 import AboutPage from './pages/AboutPage'
 
@@ -10,7 +11,7 @@ function App() {
 
   return <main id="home">
     <Header />
-    {isAboutPage ? <AboutPage /> : <><Hero /><Projects /></>}
+    {isAboutPage ? <AboutPage /> : <><Hero /><Projects /><BrandMarquee /></>}
     <Footer />
   </main>
 }
