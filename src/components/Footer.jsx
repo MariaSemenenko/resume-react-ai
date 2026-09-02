@@ -10,13 +10,17 @@ const primaryLinks = [
 ]
 
 const secondaryLinks = [
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
   { label: 'Privacy Policy', href: '#privacy' },
   { label: 'Terms & Conditions', href: '#terms' },
 ]
 
 function FooterLinks({ links }) {
-  return <ul className="footer-links">{links.map((link) => <li key={link.label}><a href={link.href}>{link.label}</a></li>)}</ul>
+  const pathname = window.location.pathname.replace(/\/$/, '') || '/'
+  return <ul className="footer-links">{links.map((link) => {
+    const active = pathname === link.href
+    return <li key={link.label}><a className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a></li>
+  })}</ul>
 }
 
 export default function Footer() {

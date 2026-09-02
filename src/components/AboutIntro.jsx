@@ -16,7 +16,7 @@ export default function AboutIntro() {
           <p className="about-greeting js-intro-greeting">Hello, I am <span className="js-wave about-wave" role="img" aria-label="waving hand">👋</span></p>
           <h1 id="about-title" className="js-intro-title">Maria Semenenko</h1>
           <p className="about-description js-intro-copy">A <span>WordPress Developer</span> and Fullstack <span>based in UA</span>. I strive to build immersive, beautiful sites through carefully crafted, user-centric design.</p>
-          <div className="about-actions js-intro-actions"><a className="about-download" href="https://dev-08.semenenko.pp.ua/wp-content/uploads/2026/04/Maria-Semenencko-Full-Stack-Front-end-Developer.pdf" target="_blank" rel="noreferrer">Download CV <span aria-hidden="true">↓</span></a><a className="about-contact" href="#contact">Contact me <span aria-hidden="true">→</span></a></div>
+          <div className="about-actions js-intro-actions"><a className="about-download" href="https://dev-08.semenenko.pp.ua/wp-content/uploads/2026/04/Maria-Semenencko-Full-Stack-Front-end-Developer.pdf" target="_blank" rel="noreferrer">Download CV <span aria-hidden="true">↓</span></a><a className="about-contact" href="/contact">Contact me <span aria-hidden="true">→</span></a></div>
         </div>
         <div className="about-visual js-intro-visual"><img className="about-flower js-spin" src={`${assetBase}/flower.png`} alt="" /><img className="about-image" src={`${assetBase}/aboutM.jpg`} alt="Maria Semenenko" /><span className="about-arrow js-arrow" aria-hidden="true">↝</span></div>
       </div>

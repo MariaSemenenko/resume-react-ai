@@ -5,7 +5,7 @@ const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/#services' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
   { label: 'Portfolio', href: '/#portfolio' },
 ]
 
@@ -24,12 +24,18 @@ function MenuIcon({ open }) {
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
+  const pathname = window.location.pathname.replace(/\/$/, '') || '/'
+  const isActive = (href) => href.startsWith('/#') ? pathname === '/' && window.location.hash === href.slice(1) : pathname === href
+  const navigationLink = (link, mobile = false) => {
+    const active = isActive(link.href)
+    return <a key={link.label} className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined} onClick={mobile ? closeMenu : undefined}>{link.label}</a>
+  }
 
   return <header className="site-header">
     <div className="header-container">
       <a className="header-logo" href="/" aria-label="Go to homepage">✳</a>
       <nav className="desktop-navigation" aria-label="Primary navigation">
-        {links.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
+        {links.map((link) => navigationLink(link))}
       </nav>
       <div className="header-actions">
         <button className="language-button" type="button" aria-label="Current language: English">🇬🇧</button>
@@ -39,7 +45,7 @@ export default function Header() {
       </div>
     </div>
     <nav id="mobile-navigation" className={`mobile-navigation ${menuOpen ? 'is-open' : ''}`} aria-label="Mobile navigation">
-      {links.map((link) => <a key={link.label} href={link.href} onClick={closeMenu}>{link.label}</a>)}
+      {links.map((link) => navigationLink(link, true))}
     </nav>
   </header>
 }
