@@ -7,15 +7,20 @@ import './PortfolioContactMarquee.css'
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const marqueeItems = [
-  { label: 'Let’s work together', href: '/contact', kind: 'accent' },
-  { label: 'Mashyni92@gmail.com', href: 'mailto:Mashyni92@gmail.com', kind: 'light' },
-  { label: 'Start a project', href: '/contact', kind: 'highlight' },
-  { label: '(+380) 67 153 73 06', href: 'tel:+380671537306', kind: 'light' },
+  { id: 'email', label: 'Mashyni92@gmail.com', href: 'mailto:Mashyni92@gmail.com', kind: 'outline' },
+  { id: 'divider-1', label: '_', kind: 'divider' },
+  { id: 'phone', label: '(+380) 67 153 73 06', href: 'tel:+380671537306', kind: 'solid' },
+  { id: 'divider-2', label: '_', kind: 'divider' },
+  { id: 'name', label: 'Maria Semenenko', href: '/about', kind: 'outline' },
+  { id: 'divider-3', label: '_', kind: 'divider' },
+  { id: 'contact', label: "Let's work together", href: '/contact', kind: 'solid' },
 ]
 
 function MarqueeGroup({ duplicate = false }) {
   return <div className="portfolio-marquee-group" aria-hidden={duplicate || undefined}>
-    {marqueeItems.map((item) => <a className={`portfolio-marquee-item is-${item.kind}`} href={item.href} tabIndex={duplicate ? -1 : undefined} key={item.label}>{item.label}<span aria-hidden="true">↗</span></a>)}
+    {marqueeItems.map((item) => item.href
+      ? <a className={`portfolio-marquee-item is-${item.kind}`} href={item.href} tabIndex={duplicate ? -1 : undefined} key={item.id}>{item.label}</a>
+      : <span className={`portfolio-marquee-item is-${item.kind}`} key={item.id}>{item.label}</span>)}
   </div>
 }
 
@@ -52,10 +57,7 @@ export default function PortfolioContactMarquee() {
   }, { scope })
 
   return <section className="portfolio-contact-marquee" ref={scope} aria-labelledby="portfolio-contact-title">
-    <div className="page-container portfolio-contact-heading">
-      <p>Have a project in mind?</p>
-      <h2 id="portfolio-contact-title">Let’s create something memorable.</h2>
-    </div>
+    <h2 className="sr-only" id="portfolio-contact-title">Contact Maria Semenenko</h2>
     <div className="portfolio-marquee-window">
       <div className="portfolio-marquee-track"><MarqueeGroup /><MarqueeGroup duplicate /></div>
     </div>
