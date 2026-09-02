@@ -1,0 +1,11 @@
+const imageBase = 'https://dev-08.semenenko.pp.ua'
+
+export const projects = [
+  { client: 'Joss Home', title: 'WooCommerce ACF Timber Woodmart', description: 'A polished ecommerce experience for a premium home and furniture brand, built around flexible WordPress content and WooCommerce.', href: 'https://joss-home.com/', image: 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images/Screenshot_2.png' },
+  { client: 'ClearCRM', title: 'ACF / Elementor', description: 'A clear, conversion-focused product website with flexible content editing and a responsive Elementor component system.', href: 'https://clearcrm.com/', image: 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images/Screenshot_6.1.png' },
+  { client: 'Aquatoria', title: 'Advanced Custom Fields PRO / Teamwork', description: 'A content-rich business website with reusable WordPress sections, multilingual structure, and a carefully balanced visual hierarchy.', href: 'https://aquatoria.kiev.ua/', image: 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images/Screenshot_7.1.png' },
+  { client: 'Bike & Car', title: 'Elementor PRO', description: 'A service-led website designed to make complex automotive offerings easy to browse on desktop and mobile.', href: 'https://bcservice.ee/', image: 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images/Screenshot_7.png' },
+  { client: 'Transcontrol', title: 'ACF PRO / WPML / Teamwork', description: 'A multilingual corporate platform with structured content, scalable templates, and a responsive interface for an international audience.', href: 'https://transcontrol.com.ua/', image: `${imageBase}/wp-content/uploads/2025/08/trans.png` },
+  { client: 'Amy Kann Sculptor', title: 'Elementor', description: 'A restrained portfolio experience that gives artwork center stage through spacious layouts and image-led storytelling.', href: 'https://www.amykannsculptor.com/', image: `${imageBase}/wp-content/uploads/2026/08/amyka.png` },
+  { client: 'Easybooks', title: 'Elementor', description: 'A modern software marketing website that presents features and value with clear navigation and approachable visuals.', href: 'https://easybooks.software/', image: `${imageBase}/wp-content/uploads/2026/08/esb.png` },
+]

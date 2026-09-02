@@ -1,0 +1,67 @@
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+import { projects } from '../data/projects'
+import './StackedProjects.css'
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
+
+function ArrowIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg>
+}
+
+function StackedProjectCard({ project, index }) {
+  const number = String(index + 1).padStart(2, '0')
+  return <article className="stacked-project-card" style={{ zIndex: index + 1 }}>
+    <div className="stacked-project-card__inner">
+      <div className="stacked-project-copy">
+        <div className="stacked-project-meta"><span>{number}</span><span>{project.client}</span></div>
+        <div>
+          <p className="stacked-project-tools">{project.title}</p>
+          <h2>{project.client}</h2>
+          <p className="stacked-project-description">{project.description}</p>
+          <a className="stacked-project-link" href={project.href} target="_blank" rel="noreferrer">View live project <ArrowIcon /></a>
+        </div>
+      </div>
+      <a className="stacked-project-visual" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.client} project`}>
+        <img src={project.image} alt={`${project.client} website preview`} loading={index < 2 ? 'eager' : 'lazy'} />
+      </a>
+    </div>
+  </article>
+}
+
+export default function StackedProjects() {
+  const scope = useRef(null)
+
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
+      const cards = gsap.utils.toArray('.stacked-project-card', scope.current)
+
+      cards.forEach((card, index) => {
+        const inner = card.querySelector('.stacked-project-card__inner')
+        gsap.fromTo(inner,
+          { y: index === 0 ? 0 : 110 },
+          {
+            y: 0,
+            ease: 'none',
+            scrollTrigger: { trigger: card, start: 'top 88%', end: 'top 17%', scrub: .7 },
+          },
+        )
+      })
+    })
+
+    return () => media.revert()
+  }, { scope })
+
+  return <section className="stacked-projects" ref={scope} aria-labelledby="stacked-projects-title">
+    <div className="page-container stacked-projects-heading">
+      <p>Scroll through the archive</p>
+      <h2 id="stacked-projects-title">Featured projects</h2>
+    </div>
+    <div className="page-container stacked-project-list">
+      {projects.map((project, index) => <StackedProjectCard project={project} index={index} key={project.client} />)}
+    </div>
+  </section>
+}

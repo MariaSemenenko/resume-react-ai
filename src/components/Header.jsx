@@ -6,7 +6,7 @@ const links = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/#services' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Portfolio', href: '/portfolio' },
 ]
 
 function DownloadIcon() {

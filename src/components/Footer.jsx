@@ -5,7 +5,7 @@ const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets
 const primaryLinks = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/#services' },
-  { label: 'Portfolio', href: '/#portfolio' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'Blog', href: '/#blog' },
 ]
 
