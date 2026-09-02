@@ -13,7 +13,10 @@
 .contact-message { max-width: 72%; margin-top: 30px; }
 .contact-submit { min-width: 130px; margin-top: 42px; padding: 15px 25px; border: 1px solid var(--color-accent); border-radius: 999px; background: transparent; color: var(--color-accent); font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; transition: background .2s ease, color .2s ease; }
 .contact-submit:hover, .contact-submit:focus-visible { background: var(--color-accent); color: var(--color-page); }
+.contact-submit:disabled { cursor: wait; opacity: .65; }
 .contact-status { min-height: 20px; margin: 14px 0 0; color: var(--color-accent); font-size: 13px; }
+.contact-status.is-error { color: #ff806f; }
+.contact-botcheck { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .contact-card { padding: clamp(30px, 3.4vw, 48px); }
 .contact-card h2 { margin: 0 0 28px; font-size: clamp(26px, 2.3vw, 34px); letter-spacing: -.04em; }
 .contact-card > p { margin: 0 0 30px; color: var(--color-muted); font-size: 14px; line-height: 1.6; }

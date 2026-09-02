@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './ContactContent.css'
 
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim()
+
 const details = [
   { type: 'phone', label: '(+380) 67 153 73 06', href: 'tel:+380671537306' },
   { type: 'email', label: 'Mashyni92@gmail.com', href: 'mailto:Mashyni92@gmail.com' },
@@ -18,12 +21,55 @@ function Field({ label, name, type = 'text', placeholder, required = false, maxL
 }
 
 export default function ContactContent() {
-  const [sent, setSent] = useState(false)
-  const submit = (event) => { event.preventDefault(); setSent(true) }
+  const [status, setStatus] = useState({ type: 'idle', message: '' })
+  const isSubmitting = status.type === 'submitting'
+
+  const submit = async (event) => {
+    event.preventDefault()
+
+    if (!WEB3FORMS_KEY) {
+      setStatus({ type: 'error', message: 'The contact form is temporarily unavailable. Please email me directly.' })
+      return
+    }
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    formData.set('access_key', WEB3FORMS_KEY)
+    formData.set('from_name', 'Maria Semenenko Portfolio')
+
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), 12000)
+    setStatus({ type: 'submitting', message: 'Sending your message...' })
+
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+        signal: controller.signal,
+      })
+      const data = await response.json()
+
+      if (!response.ok || !data.success) {
+        throw new Error('Submission failed')
+      }
+
+      form.reset()
+      setStatus({ type: 'success', message: 'Thanks! Your message has been sent.' })
+    } catch {
+      setStatus({
+        type: 'error',
+        message: 'Your message could not be sent. Please try again or email me directly.',
+      })
+    } finally {
+      window.clearTimeout(timeout)
+    }
+  }
 
   return <section className="contact-content" aria-label="Contact form and details">
     <div className="page-container contact-layout">
       <form className="contact-form" onSubmit={submit}>
+        <input className="contact-botcheck" type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" aria-hidden="true" />
         <div className="contact-field-grid">
           <Field label="Name" name="name" placeholder="Your name" required maxLength={100} />
           <Field label="Email" name="email" type="email" placeholder="Your email" required maxLength={254} />
@@ -31,8 +77,8 @@ export default function ContactContent() {
           <Field label="Subject" name="subject" placeholder="Your subject" required />
         </div>
         <label className="contact-field contact-message"><span>Your message (optional)</span><textarea name="message" rows="5" placeholder="Your message" maxLength={2000} /></label>
-        <button className="contact-submit" type="submit">Submit</button>
-        <p className="contact-status" role="status">{sent ? 'Thanks! Your message is ready to be sent.' : ''}</p>
+        <button className="contact-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Submit'}</button>
+        <p className={`contact-status is-${status.type}`} role="status" aria-live="polite">{status.message}</p>
       </form>
       <aside className="contact-card">
         <h2>Get In Touch</h2>
