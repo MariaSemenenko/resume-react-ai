@@ -49,8 +49,8 @@ export default function Header() {
       </nav>
       <div className="header-actions">
         <div className="language-switcher" role="group" aria-label={t('Language')}>
-          <button className={i18n.language === 'en' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('en')} aria-label={t('Switch to English')} aria-pressed={i18n.language === 'en'}><FlagIcon language="en" /><span>EN</span></button>
-          <button className={i18n.language === 'uk' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('uk')} aria-label={t('Switch to Ukrainian')} aria-pressed={i18n.language === 'uk'}><FlagIcon language="uk" /><span>UA</span></button>
+          <button className={i18n.language === 'en' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('en')} aria-label={t('Switch to English')} aria-pressed={i18n.language === 'en'}><FlagIcon language="en" /><span></span></button>
+          <button className={i18n.language === 'uk' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('uk')} aria-label={t('Switch to Ukrainian')} aria-pressed={i18n.language === 'uk'}><FlagIcon language="uk" /><span></span></button>
         </div>
         <a className="resume-download" href="#resume" aria-label={t('Download resume')}><DownloadIcon /></a>
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">{t(menuOpen ? 'Close navigation' : 'Open navigation')}</span></button>
