@@ -110,6 +110,7 @@ export const blogPosts = [
       },
       {
         heading: 'Installation',
+        links: [{ label: 'Download the plugin ZIP from GitHub', href: 'https://github.com/MariaSemenenko/wpb-plugin-tutorial' }],
         ordered: [
           'Upload the plugin folder to /wp-content/plugins/.',
           'Activate the plugin through the Plugins menu in WordPress.',
@@ -119,10 +120,6 @@ export const blogPosts = [
     ],
     socialLinks,
     shareLinks,
-    comments: [
-      { author: 'admin', date: '2025-05-12T12:27:00', displayDate: 'May 12, 2025 at 12:27 pm', text: 'Test-1' },
-      { author: 'Sergio', date: '2025-05-14T09:24:00', displayDate: 'May 14, 2025 at 9:24 am', text: 'Hello!' },
-    ],
   },
 ]
 

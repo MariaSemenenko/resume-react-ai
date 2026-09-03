@@ -22,7 +22,7 @@ export default function BrandMarquee() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion) return undefined
 
-    const movement = gsap.to(track, { xPercent: -50, duration: 28, ease: 'none', repeat: -1 })
+    const movement = gsap.to(track, { xPercent: -50, duration: 56, ease: 'none', repeat: -1 })
     const setSpeed = gsap.quickTo(movement, 'timeScale', { duration: 0.35, ease: 'power2.out' })
     const trigger = ScrollTrigger.create({
       trigger: root,

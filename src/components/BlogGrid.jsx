@@ -1,8 +1,10 @@
+import { useRef } from 'react'
 import { blogPosts } from '../data/blogPosts'
+import useBlogReveal from '../hooks/useBlogReveal'
 import './BlogGrid.css'
 
 function BlogCard({ post, priority }) {
-  return <article className="blog-card">
+  return <article className="blog-card js-blog-reveal">
     <a className="blog-card-image" href={`/blog/${post.slug}`} aria-label={`Read ${post.title}`}>
       <img src={post.image} alt={`${post.title} preview`} loading={priority ? 'eager' : 'lazy'} />
     </a>
@@ -17,9 +19,12 @@ function BlogCard({ post, priority }) {
 }
 
 export default function BlogGrid() {
-  return <section className="blog-index" aria-labelledby="blog-index-title">
+  const scope = useRef(null)
+  useBlogReveal(scope)
+
+  return <section className="blog-index" ref={scope} aria-labelledby="blog-index-title">
     <div className="page-container">
-      <div className="blog-index-heading">
+      <div className="blog-index-heading js-blog-reveal">
         <p>Notes and builds</p>
         <h2 id="blog-index-title">Development stories</h2>
       </div>
