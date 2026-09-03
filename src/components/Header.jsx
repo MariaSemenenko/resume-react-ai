@@ -4,7 +4,7 @@ import './Header.css'
 const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Services', href: '/#services' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
   { label: 'Portfolio', href: '/portfolio' },
 ]
@@ -25,7 +25,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
-  const isActive = (href) => href.startsWith('/#') ? pathname === '/' && window.location.hash === href.slice(1) : pathname === href
+  const isActive = (href) => href === '/blog' ? pathname === '/blog' || pathname.startsWith('/blog/') : href.startsWith('/#') ? pathname === '/' && window.location.hash === href.slice(1) : pathname === href
   const navigationLink = (link, mobile = false) => {
     const active = isActive(link.href)
     return <a key={link.label} className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined} onClick={mobile ? closeMenu : undefined}>{link.label}</a>
@@ -49,4 +49,3 @@ export default function Header() {
     </nav>
   </header>
 }
-

@@ -4,9 +4,8 @@ const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets
 
 const primaryLinks = [
   { label: 'About', href: '/about' },
-  { label: 'Services', href: '/#services' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Blog', href: '/#blog' },
 ]
 
 const secondaryLinks = [
@@ -18,7 +17,7 @@ const secondaryLinks = [
 function FooterLinks({ links }) {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
   return <ul className="footer-links">{links.map((link) => {
-    const active = pathname === link.href
+    const active = link.href === '/blog' ? pathname === '/blog' || pathname.startsWith('/blog/') : pathname === link.href
     return <li key={link.label}><a className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a></li>
   })}</ul>
 }
@@ -52,4 +51,3 @@ export default function Footer() {
     </div>
   </footer>
 }
-

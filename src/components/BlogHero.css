@@ -1,0 +1,11 @@
+.blog-hero { position: relative; min-height: clamp(390px, 44vw, 600px); display: grid; place-items: center; overflow: hidden; background: var(--color-surface); }
+.blog-hero-image, .blog-hero-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.blog-hero-image { object-fit: cover; object-position: center; }
+.blog-hero-overlay { background: linear-gradient(90deg, rgba(7, 11, 17, .9), rgba(14, 20, 29, .48) 58%, rgba(14, 20, 29, .72)); }
+.blog-hero-content { position: relative; z-index: 1; text-align: center; }
+.blog-hero-content > p { margin: 0 0 16px; color: var(--color-accent); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.blog-hero-content h1 { max-width: 980px; margin: 0 auto; color: var(--color-text); font-size: clamp(52px, 7vw, 96px); letter-spacing: -.07em; line-height: .98; }
+.blog-breadcrumbs { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; margin-top: 28px; color: var(--color-muted); font-size: 12px; }
+.blog-breadcrumbs a { color: var(--color-text); text-decoration: none; }
+.blog-breadcrumbs a:hover { color: var(--color-accent); }
+@media (max-width: 600px) { .blog-hero { min-height: 390px; }.blog-hero-content h1 { font-size: clamp(46px, 14vw, 68px); }.blog-breadcrumbs span:last-child { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
