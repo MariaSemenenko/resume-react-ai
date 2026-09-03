@@ -1,12 +1,15 @@
 ﻿import { useState } from 'react'
 import './Header.css'
+import { useTranslation } from 'react-i18next'
+
+const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images'
 
 const links = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Portfolio', href: '/portfolio' },
+  { key: 'Home', href: '/' },
+  { key: 'About', href: '/about' },
+  { key: 'Blog', href: '/blog' },
+  { key: 'Contact', href: '/contact' },
+  { key: 'Portfolio', href: '/portfolio' },
 ]
 
 function DownloadIcon() {
@@ -21,30 +24,40 @@ function MenuIcon({ open }) {
   return <span className={`header-menu-icon ${open ? 'is-open' : ''}`} aria-hidden="true"><i /><i /><i /></span>
 }
 
+function FlagIcon({ language }) {
+  return language === 'uk'
+    ? <svg className="language-flag" viewBox="0 0 24 16" aria-hidden="true"><path fill="#0057b7" d="M0 0h24v8H0z" /><path fill="#ffd700" d="M0 8h24v8H0z" /></svg>
+    : <svg className="language-flag" viewBox="0 0 24 16" aria-hidden="true"><path fill="#012169" d="M0 0h24v16H0z" /><path stroke="#fff" strokeWidth="3" d="m0 0 24 16M24 0 0 16" /><path stroke="#c8102e" strokeWidth="1.5" d="m0 0 24 16M24 0 0 16" /><path stroke="#fff" strokeWidth="5" d="M12 0v16M0 8h24" /><path stroke="#c8102e" strokeWidth="3" d="M12 0v16M0 8h24" /></svg>
+}
+
 export default function Header() {
+  const { t, i18n } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
   const isActive = (href) => href === '/blog' ? pathname === '/blog' || pathname.startsWith('/blog/') : href.startsWith('/#') ? pathname === '/' && window.location.hash === href.slice(1) : pathname === href
   const navigationLink = (link, mobile = false) => {
     const active = isActive(link.href)
-    return <a key={link.label} className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined} onClick={mobile ? closeMenu : undefined}>{link.label}</a>
+    return <a key={link.key} className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined} onClick={mobile ? closeMenu : undefined}>{t(link.key)}</a>
   }
 
   return <header className="site-header">
     <div className="header-container">
-      <a className="header-logo" href="/" aria-label="Go to homepage">✳</a>
-      <nav className="desktop-navigation" aria-label="Primary navigation">
+      <a className="header-logo" href="/" aria-label={t('Go to homepage')}><img src={`${assetBase}/flower.png`} alt="" /></a>
+      <nav className="desktop-navigation" aria-label={t('Primary navigation')}>
         {links.map((link) => navigationLink(link))}
       </nav>
       <div className="header-actions">
-        <button className="language-button" type="button" aria-label="Current language: English">🇬🇧</button>
-        <a className="resume-download" href="#resume" aria-label="Download resume"><DownloadIcon /></a>
-        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">Open navigation</span></button>
-        <a className="account-button" href="#account" aria-label="Account"><UserIcon /></a>
+        <div className="language-switcher" role="group" aria-label={t('Language')}>
+          <button className={i18n.language === 'en' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('en')} aria-label={t('Switch to English')} aria-pressed={i18n.language === 'en'}><FlagIcon language="en" /><span>EN</span></button>
+          <button className={i18n.language === 'uk' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('uk')} aria-label={t('Switch to Ukrainian')} aria-pressed={i18n.language === 'uk'}><FlagIcon language="uk" /><span>UA</span></button>
+        </div>
+        <a className="resume-download" href="#resume" aria-label={t('Download resume')}><DownloadIcon /></a>
+        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">{t(menuOpen ? 'Close navigation' : 'Open navigation')}</span></button>
+        <a className="account-button" href="#account" aria-label={t('Account')}><UserIcon /></a>
       </div>
     </div>
-    <nav id="mobile-navigation" className={`mobile-navigation ${menuOpen ? 'is-open' : ''}`} aria-label="Mobile navigation">
+    <nav id="mobile-navigation" className={`mobile-navigation ${menuOpen ? 'is-open' : ''}`} aria-label={t('Mobile navigation')}>
       {links.map((link) => navigationLink(link, true))}
     </nav>
   </header>

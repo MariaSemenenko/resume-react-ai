@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { projects } from '../data/projects'
 import './StackedProjects.css'
+import { useTranslation } from 'react-i18next'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -12,6 +13,7 @@ function ArrowIcon() {
 }
 
 function StackedProjectCard({ project, index }) {
+  const { t } = useTranslation()
   const number = String(index + 1).padStart(2, '0')
   return <article className="stacked-project-card" style={{ zIndex: index + 1 }}>
     <div className="stacked-project-card__inner">
@@ -20,18 +22,19 @@ function StackedProjectCard({ project, index }) {
         <div>
           <p className="stacked-project-tools">{project.title}</p>
           <h2>{project.client}</h2>
-          <p className="stacked-project-description">{project.description}</p>
-          <a className="stacked-project-link" href={project.href} target="_blank" rel="noreferrer">View live project <ArrowIcon /></a>
+          <p className="stacked-project-description">{t(project.description)}</p>
+          <a className="stacked-project-link" href={project.href} target="_blank" rel="noreferrer">{t('View live project')} <ArrowIcon /></a>
         </div>
       </div>
-      <a className="stacked-project-visual" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.client} project`}>
-        <img src={project.image} alt={`${project.client} website preview`} loading={index < 2 ? 'eager' : 'lazy'} />
+      <a className="stacked-project-visual" href={project.href} target="_blank" rel="noreferrer" aria-label={t('Open {{client}} project', { client: project.client })}>
+        <img src={project.image} alt={t('{{client}} website preview', { client: project.client })} loading={index < 2 ? 'eager' : 'lazy'} />
       </a>
     </div>
   </article>
 }
 
 export default function StackedProjects() {
+  const { t } = useTranslation()
   const scope = useRef(null)
 
   useGSAP(() => {
@@ -57,8 +60,8 @@ export default function StackedProjects() {
 
   return <section className="stacked-projects" ref={scope} aria-labelledby="stacked-projects-title">
     <div className="page-container stacked-projects-heading">
-      <p>Scroll through the archive</p>
-      <h2 id="stacked-projects-title">Featured projects</h2>
+      <p>{t('Scroll through the archive')}</p>
+      <h2 id="stacked-projects-title">{t('Featured projects')}</h2>
     </div>
     <div className="page-container stacked-project-list">
       {projects.map((project, index) => <StackedProjectCard project={project} index={index} key={project.client} />)}

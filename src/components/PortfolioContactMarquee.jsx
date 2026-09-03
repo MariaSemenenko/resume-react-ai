@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import './PortfolioContactMarquee.css'
+import { useTranslation } from 'react-i18next'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -16,15 +17,16 @@ const marqueeItems = [
   { id: 'contact', label: "Let's work together", href: '/contact', kind: 'solid' },
 ]
 
-function MarqueeGroup({ duplicate = false }) {
+function MarqueeGroup({ duplicate = false, t }) {
   return <div className="portfolio-marquee-group" aria-hidden={duplicate || undefined}>
     {marqueeItems.map((item) => item.href
-      ? <a className={`portfolio-marquee-item is-${item.kind}`} href={item.href} tabIndex={duplicate ? -1 : undefined} key={item.id}>{item.label}</a>
+      ? <a className={`portfolio-marquee-item is-${item.kind}`} href={item.href} tabIndex={duplicate ? -1 : undefined} key={item.id}>{t(item.label)}</a>
       : <span className={`portfolio-marquee-item is-${item.kind}`} key={item.id}>{item.label}</span>)}
   </div>
 }
 
 export default function PortfolioContactMarquee() {
+  const { t } = useTranslation()
   const scope = useRef(null)
 
   useGSAP(() => {
@@ -57,9 +59,9 @@ export default function PortfolioContactMarquee() {
   }, { scope })
 
   return <section className="portfolio-contact-marquee" ref={scope} aria-labelledby="portfolio-contact-title">
-    <h2 className="sr-only" id="portfolio-contact-title">Contact Maria Semenenko</h2>
+    <h2 className="sr-only" id="portfolio-contact-title">{t('Contact Maria Semenenko')}</h2>
     <div className="portfolio-marquee-window">
-      <div className="portfolio-marquee-track"><MarqueeGroup /><MarqueeGroup duplicate /></div>
+      <div className="portfolio-marquee-track"><MarqueeGroup t={t} /><MarqueeGroup duplicate t={t} /></div>
     </div>
   </section>
 }

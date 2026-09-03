@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './ContactContent.css'
+import { useTranslation } from 'react-i18next'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim()
@@ -21,6 +22,7 @@ function Field({ label, name, type = 'text', placeholder, required = false, maxL
 }
 
 export default function ContactContent() {
+  const { t } = useTranslation()
   const [status, setStatus] = useState({ type: 'idle', message: '' })
   const isSubmitting = status.type === 'submitting'
 
@@ -28,7 +30,7 @@ export default function ContactContent() {
     event.preventDefault()
 
     if (!WEB3FORMS_KEY) {
-      setStatus({ type: 'error', message: 'The contact form is temporarily unavailable. Please email me directly.' })
+      setStatus({ type: 'error', message: t('The contact form is temporarily unavailable. Please email me directly.') })
       return
     }
 
@@ -39,7 +41,7 @@ export default function ContactContent() {
 
     const controller = new AbortController()
     const timeout = window.setTimeout(() => controller.abort(), 12000)
-    setStatus({ type: 'submitting', message: 'Sending your message...' })
+    setStatus({ type: 'submitting', message: t('Sending your message...') })
 
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
@@ -55,36 +57,36 @@ export default function ContactContent() {
       }
 
       form.reset()
-      setStatus({ type: 'success', message: 'Thanks! Your message has been sent.' })
+      setStatus({ type: 'success', message: t('Thanks! Your message has been sent.') })
     } catch {
       setStatus({
         type: 'error',
-        message: 'Your message could not be sent. Please try again or email me directly.',
+        message: t('Your message could not be sent. Please try again or email me directly.'),
       })
     } finally {
       window.clearTimeout(timeout)
     }
   }
 
-  return <section className="contact-content" aria-label="Contact form and details">
+  return <section className="contact-content" aria-label={t('Contact form and details')}>
     <div className="page-container contact-layout">
       <form className="contact-form" onSubmit={submit}>
         <input className="contact-botcheck" type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" aria-hidden="true" />
         <div className="contact-field-grid">
-          <Field label="Name" name="name" placeholder="Your name" required maxLength={100} />
-          <Field label="Email" name="email" type="email" placeholder="Your email" required maxLength={254} />
-          <Field label="Phone" name="tel" type="tel" placeholder="Your phone" maxLength={30} />
-          <Field label="Subject" name="subject" placeholder="Your subject" required />
+          <Field label={t('Name')} name="name" placeholder={t('Your name')} required maxLength={100} />
+          <Field label={t('Email')} name="email" type="email" placeholder={t('Your email')} required maxLength={254} />
+          <Field label={t('Phone')} name="tel" type="tel" placeholder={t('Your phone')} maxLength={30} />
+          <Field label={t('Subject')} name="subject" placeholder={t('Your subject')} required />
         </div>
-        <label className="contact-field contact-message"><span>Your message (optional)</span><textarea name="message" rows="5" placeholder="Your message" maxLength={2000} /></label>
-        <button className="contact-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Submit'}</button>
+        <label className="contact-field contact-message"><span>{t('Your message (optional)')}</span><textarea name="message" rows="5" placeholder={t('Your message')} maxLength={2000} /></label>
+        <button className="contact-submit" type="submit" disabled={isSubmitting}>{t(isSubmitting ? 'Sending...' : 'Submit')}</button>
         <p className={`contact-status is-${status.type}`} role="status" aria-live="polite">{status.message}</p>
       </form>
       <aside className="contact-card">
-        <h2>Get In Touch</h2>
-        <p>Thanks to its flexibility, WordPress has become the heart of millions of websites around the world.</p>
+        <h2>{t('Get In Touch')}</h2>
+        <p>{t('Thanks to its flexibility, WordPress has become the heart of millions of websites around the world.')}</p>
         <address>
-          {details.map((item) => <div className="contact-detail" key={item.type}><ContactIcon type={item.type} />{item.href ? <a href={item.href}>{item.label}</a> : <span>{item.label}</span>}</div>)}
+          {details.map((item) => <div className="contact-detail" key={item.type}><ContactIcon type={item.type} />{item.href ? <a href={item.href}>{item.label}</a> : <span>{t(item.label)}</span>}</div>)}
         </address>
       </aside>
     </div>

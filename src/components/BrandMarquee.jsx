@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import './BrandMarquee.css'
+import { useTranslation } from 'react-i18next'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -14,6 +15,7 @@ function LogoGroup() {
 }
 
 export default function BrandMarquee() {
+  const { t } = useTranslation()
   const marqueeRef = useRef(null)
 
   useGSAP(() => {
@@ -47,7 +49,7 @@ export default function BrandMarquee() {
   }, { scope: marqueeRef })
 
   return <section className="brand-marquee" ref={marqueeRef} aria-labelledby="brands-title">
-    <h2 id="brands-title">Trusted by world-leading brands</h2>
+    <h2 id="brands-title">{t('Trusted by world-leading brands')}</h2>
     <div className="marquee-window"><div className="marquee-track"><LogoGroup /><LogoGroup /></div></div>
   </section>
 }
