@@ -2,6 +2,10 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 const uk = {
+  'From concept to launch': 'Від ідеї до запуску',
+  'Every project, brought to life.': 'Кожен проєкт оживає.',
+  'Explore the Framer, WordPress, and WooCommerce projects behind my work.': 'Перегляньте мої проєкти на Framer, WordPress і WooCommerce.',
+  'A creative developer character, from sketch to color': 'Креативний персонаж-розробник: від ескізу до кольору',
   'Solutions': 'Рішення',
   'Web solutions for real business.': 'Вебрішення для реального бізнесу.',
   'From Seleqt and ClearCRM to Joss Home, explore the websites I build with Framer, WordPress, and WooCommerce.': 'Від Seleqt і ClearCRM до Joss Home — перегляньте сайти, які я створюю на Framer, WordPress і WooCommerce.',
