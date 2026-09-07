@@ -38,8 +38,9 @@ export function useSolutionsScroll(scope, language) {
 
       timeline
         .fromTo(character, { scale: .76 }, { scale: 1.22, duration: 1 }, 0)
+        // Keep the outline opaque until the color layer covers it.
         .fromTo(section.querySelector('.solution-character__outline'),
-          { opacity: 1 }, { opacity: 0, duration: .4 }, .2)
+          { opacity: 1 }, { opacity: 0, duration: .14 }, .68)
         .fromTo(section.querySelector('.solution-character__color'),
           { opacity: 0 }, { opacity: 1, duration: .46 }, .22)
         .fromTo(cards, { x: 0, y: 0, scale: 1, opacity: 1 }, {
