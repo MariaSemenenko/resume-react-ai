@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="footer-grid">
         <section className="footer-intro">
           <a className="footer-logo" href="#home" aria-label={t('Go to homepage')}><img src={`${assetBase}/flower.png`} alt="" /></a>
-          <p>{t('When do they work well, and when do they rely on us? And finally, when do we actually need them?')}</p>
+          <p>{t('Technologies that are working at full capacity, driven by people and built for real needs.')}</p>
           <address className="footer-contacts">
             <a href="tel:+380671537306"><img src={`${assetBase}/phone_svg.svg`} alt="" />(+380) 67 153 73 06</a>
             <a href="mailto:Mashyni92@gmail.com"><img src={`${assetBase}/email_svg.svg`} alt="" />Mashyni92@gmail.com</a>

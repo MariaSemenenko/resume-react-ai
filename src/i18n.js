@@ -128,7 +128,7 @@ const uk = {
   'Information': 'Інформація',
   'Privacy Policy': 'Політика конфіденційності',
   'Terms & Conditions': 'Умови використання',
-  'When do they work well, and when do they rely on us? And finally, when do we actually need them?': 'Коли технології працюють найкраще, коли залежать від нас і коли вони справді нам потрібні?',
+  'Technologies that are working at full capacity, driven by people and built for real needs.': 'Технології, що працюють на повну потужність, керовані людьми та створені для реальних потреб.',
   'All rights reserved by': 'Усі права захищено',
   'Web Developer.': 'Web Developer.',
   'Email address': 'Email-адреса',
