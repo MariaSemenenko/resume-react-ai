@@ -2,6 +2,14 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 const uk = {
+  'Solutions': 'Рішення',
+  'Web solutions for real business.': 'Вебрішення для реального бізнесу.',
+  'From Seleqt and ClearCRM to Joss Home, explore the websites I build with Framer, WordPress, and WooCommerce.': 'Від Seleqt і ClearCRM до Joss Home — перегляньте сайти, які я створюю на Framer, WordPress і WooCommerce.',
+  'Select a portfolio project': 'Виберіть проєкт із портфоліо',
+  'Explore portfolio': 'Переглянути портфоліо',
+  'Built with': 'Створено за допомогою',
+  'Preview unavailable. Use the project link to explore the website.': 'Попередній перегляд недоступний. Скористайтеся посиланням на проєкт, щоб переглянути сайт.',
+  'Open resume PDF in a new tab': 'Відкрити PDF-резюме в новій вкладці',
   'Home': 'Головна',
   'About': 'Про мене',
   'Blog': 'Блог',

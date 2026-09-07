@@ -9,6 +9,7 @@ import ContactPage from './pages/ContactPage'
 import PortfolioPage from './pages/PortfolioPage'
 import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
+import SolutionsPage from './pages/SolutionsPage'
 import { getBlogPost } from './data/blogPosts'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     '/about': <AboutPage />,
     '/contact': <ContactPage />,
     '/portfolio': <PortfolioPage />,
+    '/solutions': <SolutionsPage />,
     '/blog': <BlogPage />,
   }
   const content = blogSlug ? <BlogPostPage post={getBlogPost(blogSlug)} /> : pages[pathname] ?? <><Hero /><Projects /><BrandMarquee /></>

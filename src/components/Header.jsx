@@ -4,12 +4,15 @@ import { useTranslation } from 'react-i18next'
 
 const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images'
 
+const resumeUrl = `${import.meta.env.BASE_URL}${encodeURIComponent('Maria Semenencko  Full Stack Front-end Developer.pdf')}`
+
 const links = [
   { key: 'Home', href: '/' },
   { key: 'About', href: '/about' },
   { key: 'Blog', href: '/blog' },
   { key: 'Contact', href: '/contact' },
   { key: 'Portfolio', href: '/portfolio' },
+  { key: 'Solutions', href: '/solutions' },
 ]
 
 function DownloadIcon() {
@@ -52,7 +55,7 @@ export default function Header() {
           <button className={i18n.language === 'en' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('en')} aria-label={t('Switch to English')} aria-pressed={i18n.language === 'en'}><FlagIcon language="en" /><span></span></button>
           <button className={i18n.language === 'uk' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('uk')} aria-label={t('Switch to Ukrainian')} aria-pressed={i18n.language === 'uk'}><FlagIcon language="uk" /><span></span></button>
         </div>
-        <a className="resume-download" href="#resume" aria-label={t('Download resume')}><DownloadIcon /></a>
+        <a className="resume-download" href={resumeUrl} target="_blank" rel="noopener noreferrer" aria-label={t('Open resume PDF in a new tab')} title={t('Open resume PDF in a new tab')}><DownloadIcon /></a>
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">{t(menuOpen ? 'Close navigation' : 'Open navigation')}</span></button>
         <a className="account-button" href="#account" aria-label={t('Account')}><UserIcon /></a>
       </div>
