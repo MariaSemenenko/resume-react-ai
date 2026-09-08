@@ -63,7 +63,7 @@
   z-index: 2;
   grid-column: 1 / -1;
   justify-self: center;
-  width: min(80%, 600px);
+  width: min(90%, 700px);
   aspect-ratio: 650.50209 / 698.68496;
   pointer-events: none;
 }
@@ -170,11 +170,11 @@
 
 .is-scroll-enabled .solutions-scroll__character {
   position: absolute;
-  top: 62%;
+  top: 52%;
   left: 50%;
-  width: 58%;
-  max-width: 720px;
-  max-height: 60%;
+  width: 66%;
+  max-width: 840px;
+  max-height: 75%;
   transform: translate(-50%, -50%);
 }
 
@@ -202,7 +202,7 @@
 
 @media (min-width: 1920px) {
   .is-scroll-enabled .solutions-scroll__character {
-    max-width: 760px;
+    max-width: 900px;
   }
 }
 
@@ -217,7 +217,7 @@
   }
 
   .is-scroll-enabled .solutions-scroll__character {
-    width: 66%;
+    width: 76%;
   }
 
   .is-scroll-enabled .scroll-project-card {
@@ -249,7 +249,7 @@
   }
 
   .is-scroll-enabled .solutions-scroll__character {
-    width: 80%;
+    width: 86%;
   }
 
   .is-scroll-enabled .scroll-project-card {
