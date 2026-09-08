@@ -2,7 +2,7 @@
 import './Header.css'
 import { useTranslation } from 'react-i18next'
 
-const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images'
+const assetBase = '/images'
 
 const resumeUrl = `${import.meta.env.BASE_URL}${encodeURIComponent('Maria Semenencko  Full Stack Front-end Developer.pdf')}`
 

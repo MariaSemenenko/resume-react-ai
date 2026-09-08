@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import './Footer.css'
 
-const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images'
+const assetBase = '/images'
 const primaryLinks = [{ key: 'About', href: '/about' }, { key: 'Blog', href: '/blog' }, { key: 'Portfolio', href: '/portfolio' }]
 const secondaryLinks = [{ key: 'Contact', href: '/contact' }, { key: 'Privacy Policy', href: '#privacy' }, { key: 'Terms & Conditions', href: '#terms' }]
 

@@ -19,7 +19,7 @@ export const blogPosts = [
     author: 'admin',
     views: 0,
     category: 'WordPress Development',
-    image: 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2025/05/fotbool.png',
+    image: '/footballmatches.png',
     excerpt: 'Display football matches from football-data.org with league selection, a configurable date range, and an optional image.',
     intro: 'This plugin allows you to display football matches using the football-data.org API. It lets you select a league and specify a date range to display matches. There is also an option to upload an image that will be displayed on the page.',
     sections: [
@@ -46,7 +46,7 @@ export const blogPosts = [
       {
         heading: 'Settings and documentation',
         paragraphs: ['Configure the league, date range, API key, and optional image in the plugin settings.'],
-        image: 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2025/05/settings-api.png',
+        image: '/images/football-matches-settings.png',
         imageAlt: 'Football Matches plugin API settings',
         links: [{ label: 'football-data.org quickstart documentation', href: 'https://www.football-data.org/documentation/quickstart' }],
       },
@@ -62,7 +62,7 @@ export const blogPosts = [
     author: 'admin',
     views: 0,
     category: 'WooCommerce',
-    image: 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2025/05/slider-woo.png',
+    image: '/flormarslider.png',
     excerpt: 'A responsive WooCommerce product slider that presents best-selling products in a clean carousel.',
     intro: 'Flormar Slider is a simple WooCommerce product slider plugin that displays the best-selling products in a beautiful carousel format.',
     sections: [
@@ -98,14 +98,14 @@ export const blogPosts = [
     author: 'admin',
     views: 0,
     category: 'Tutorial',
-    image: 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2024/12/drink-1839134_1280.jpg',
-    articleImage: 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2024/12/follow.png',
+    image: '/banerblog.jpg',
+    articleImage: '/wpbtutorial.png',
     excerpt: 'A practical plugin that adds a social-profile message to the end of every WordPress post.',
     intro: 'This plugin adds a special message at the end of each post, encouraging readers to follow your social media profiles on Twitter, Facebook, GitHub, and more.',
     sections: [
       {
         heading: 'Plugin preview',
-        image: 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2024/12/follow.png',
+        image: '/wpbtutorial.png',
         imageAlt: 'Follow Us message created by the WPB tutorial plugin',
       },
       {

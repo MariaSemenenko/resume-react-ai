@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import useBlogReveal from '../hooks/useBlogReveal'
 import './BlogHero.css'
 
-export default function BlogHero({ title = 'Latest Blog', eyebrow = 'Blog', image = 'https://dev-08.semenenko.pp.ua/wp-content/uploads/2024/12/drink-1839134_1280.jpg' }) {
+export default function BlogHero({ title = 'Latest Blog', eyebrow = 'Blog', image = '/banerblog.jpg' }) {
   const { t } = useTranslation()
   const scope = useRef(null)
   useBlogReveal(scope)

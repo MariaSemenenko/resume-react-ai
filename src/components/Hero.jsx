@@ -3,7 +3,7 @@ import './Hero.css'
 import { usePageIntro } from '../hooks/usePageIntro'
 import { useTranslation } from 'react-i18next'
 
-const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images'
+const assetBase = '/images'
 
 export default function Hero() {
   const { t } = useTranslation()

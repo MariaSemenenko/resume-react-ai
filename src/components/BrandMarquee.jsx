@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const assetBase = 'https://dev-08.semenenko.pp.ua/wp-content/themes/libro/assets/images'
+const assetBase = '/images'
 const logos = [1, 2, 3, 4, 5, 6, 7, 8, 7]
 
 function LogoGroup() {
