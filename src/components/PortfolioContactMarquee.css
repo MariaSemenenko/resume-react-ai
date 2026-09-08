@@ -1,4 +1,4 @@
-.portfolio-contact-marquee { padding: clamp(16px, 2vw, 28px) 0; overflow: hidden; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
+.portfolio-contact-marquee { padding: clamp(16px, 2vw, 28px) 0; overflow: hidden; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
 .portfolio-marquee-window { width: 100%; overflow: hidden; }
 .portfolio-marquee-track { display: flex; width: max-content; will-change: transform; }
 .portfolio-marquee-group { display: flex; flex: 0 0 auto; align-items: center; gap: clamp(26px, 3vw, 54px); padding-right: clamp(26px, 3vw, 54px); }
