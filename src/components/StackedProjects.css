@@ -1,7 +1,7 @@
 .stacked-projects { padding: clamp(66px, 9vw, 124px) 0 clamp(90px, 12vw, 180px); }
 .stacked-projects-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: clamp(38px, 6vw, 78px); }
 .stacked-projects-heading > p { margin: 0 0 8px; color: var(--color-accent); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.stacked-projects-heading > h2 { margin: 0; color: var(--color-text); font-size: clamp(34px, 4.6vw, 68px); letter-spacing: -.06em; line-height: 1; font-weight: 500;}
+.stacked-projects-heading > h2 { margin: 0; color: var(--color-text); font-size: clamp(34px, 4.6vw, 64px); letter-spacing: -.06em; line-height: 1; font-weight: 500;}
 .stacked-project-list { position: relative; }
 .stacked-project-card { position: sticky; top: clamp(88px, 17vh, 150px); min-height: min(62vh, 580px); margin-bottom: 22vh; }
 .stacked-project-card:last-child { margin-bottom: 0; }
@@ -10,7 +10,7 @@
 .stacked-project-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: clamp(28px, 4vw, 58px); }
 .stacked-project-meta { display: flex; justify-content: space-between; gap: 20px; color: var(--color-muted); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .stacked-project-tools { margin: 0 0 15px; color: var(--color-accent); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.stacked-project-copy h2 { margin: 0; color: var(--color-text); font-size: clamp(38px, 4.5vw, 68px); letter-spacing: -.065em; line-height: .98; }
+.stacked-project-copy h2 { margin: 0; color: var(--color-text); font-size: clamp(38px, 4.5vw, 68px); font-weight: 500; letter-spacing: -.065em; line-height: .98; }
 .stacked-project-description { max-width: 450px; margin: 24px 0 30px; color: var(--color-muted); font-size: 15px; line-height: 1.65; }
 .stacked-project-link { display: inline-flex; align-items: center; gap: 12px; color: var(--color-text); font-size: 13px; font-weight: 800; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
 .stacked-project-link svg { width: 22px; fill: none; stroke: var(--color-accent); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; transition: transform .2s ease; }
