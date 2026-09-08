@@ -1,4 +1,4 @@
-.solutions-page {
+.home-page {
   min-height: calc(100svh - 72px);
   padding: clamp(72px, 8vw, 144px) 0;
   background: var(--color-page);
@@ -83,7 +83,7 @@
   flex: 0 0 auto;
 }
 
-.solutions-page :is(a, button, [role="tabpanel"], video):focus-visible {
+.home-page :is(a, button, [role="tabpanel"], video):focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 5px;
 }
@@ -340,7 +340,7 @@ video.solution-media {
 }
 
 @media (max-width: 520px) {
-  .solutions-page {
+  .home-page {
     min-height: calc(100svh - 64px);
     padding: 48px 0 60px;
   }
@@ -393,7 +393,7 @@ video.solution-media {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .solutions-page :is(a, button) {
+  .home-page :is(a, button) {
     transition: none;
   }
 }

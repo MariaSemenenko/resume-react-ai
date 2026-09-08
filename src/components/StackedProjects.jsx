@@ -16,7 +16,7 @@ function StackedProjectCard({ project, index }) {
   const { t } = useTranslation()
   const number = String(index + 1).padStart(2, '0')
   return <article className="stacked-project-card" style={{ zIndex: index + 1 }}>
-    <div className="stacked-project-card__inner">
+    <div className="stacked-project-card__inner theme-light">
       <div className="stacked-project-copy">
         <div className="stacked-project-meta"><span>{number}</span><span>{project.client}</span></div>
         <div>
@@ -58,7 +58,7 @@ export default function StackedProjects() {
     return () => media.revert()
   }, { scope })
 
-  return <section className="stacked-projects" ref={scope} aria-labelledby="stacked-projects-title">
+  return <section className="stacked-projects" id="portfolio" ref={scope} aria-labelledby="stacked-projects-title">
     <div className="page-container stacked-projects-heading">
       <p>{t('Scroll through the archive')}</p>
       <h2 id="stacked-projects-title">{t('Featured projects')}</h2>

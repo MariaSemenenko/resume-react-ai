@@ -21,7 +21,7 @@ export default function SolutionsShowcase() {
   >
     {({ project, tabList, panels }) => <div className="page-container solutions-showcase">
       <div className="solutions-copy">
-        <p className="solutions-eyebrow">{t('Solutions')}</p>
+        <p className="solutions-eyebrow">{t('Home')}</p>
         <h1 id="solutions-title">{t('Web solutions for real business.')}</h1>
         <p className="solutions-intro">{t('From Seleqt and ClearCRM to Joss Home, explore the websites I build with Framer, WordPress, and WooCommerce.')}</p>
         {tabList}

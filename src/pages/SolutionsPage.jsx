@@ -1,9 +1,11 @@
-import SolutionsShowcase from '../components/solutions/SolutionsShowcase'
-import SolutionsScrollSection from '../components/solutions/SolutionsScrollSection'
+import Hero from '../components/Hero'
+import Projects from '../components/Projects'
+import BrandMarquee from '../components/BrandMarquee'
 
 export default function SolutionsPage() {
-  return <section className="solutions-page theme-light" aria-labelledby="solutions-title">
-    <SolutionsShowcase />
-    <SolutionsScrollSection />
-  </section>
+  return <>
+    <Hero />
+    <Projects />
+    <BrandMarquee />
+  </>
 }

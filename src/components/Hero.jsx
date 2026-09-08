@@ -12,7 +12,7 @@ export default function Hero() {
 
   return <section className="hero-section" ref={heroRef} aria-labelledby="hero-title">
     <div className="page-container hero-container">
-      <p className="breadcrumbs">{t('Home')}</p>
+      <p className="breadcrumbs">{t('Solutions')}</p>
       <p className="hero-greeting js-intro-greeting">{t('Hello, I am')} <span className="js-wave hero-wave" aria-label="waving hand" role="img">👋</span></p>
       <h1 id="hero-title" className="js-intro-title"><mark>{t('Web')}</mark> {t('Developer')}</h1>
       <div className="hero-visual js-intro-visual">
