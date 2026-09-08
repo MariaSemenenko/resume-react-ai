@@ -5,7 +5,7 @@ const uk = {
   'From concept to launch': 'Від ідеї до запуску',
   'Every project, brought to life.': 'Кожен проєкт оживає.',
   'Explore the Framer, WordPress, and WooCommerce projects behind my work.': 'Перегляньте мої проєкти на Framer, WordPress і WooCommerce.',
-  'A code sample in a browser window, from outline to color': 'Зразок коду у вікні браузера: від контурів до кольору',
+  'A person in thought, from outline to color': 'Людина в роздумах: від контурів до кольору',
   'Solutions': 'Рішення',
   'Web solutions for real business.': 'Вебрішення для реального бізнесу.',
   'From Seleqt and ClearCRM to Joss Home, explore the websites I build with Framer, WordPress, and WooCommerce.': 'Від Seleqt і ClearCRM до Joss Home — перегляньте сайти, які я створюю на Framer, WordPress і WooCommerce.',

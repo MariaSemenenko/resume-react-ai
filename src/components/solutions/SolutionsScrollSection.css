@@ -64,7 +64,7 @@
   grid-column: 1 / -1;
   justify-self: center;
   width: min(80%, 600px);
-  aspect-ratio: 884 / 611.964;
+  aspect-ratio: 650.50209 / 698.68496;
   pointer-events: none;
 }
 
@@ -83,19 +83,7 @@
   height: 100%;
 }
 
-.code-sample-artwork__ink {
-  fill: var(--color-text);
-}
-
-.code-sample-artwork__paper {
-  fill: var(--color-page);
-}
-
-.code-sample-artwork__accent {
-  fill: var(--color-accent);
-}
-
-.solution-character__outline :is(path, rect) {
+.solution-character__outline :is(path, rect, circle, polygon) {
   fill: var(--color-page);
   stroke: var(--color-text);
   stroke-width: 1.1;
