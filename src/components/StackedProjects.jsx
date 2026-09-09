@@ -39,20 +39,36 @@ export default function StackedProjects() {
 
   useGSAP(() => {
     const cards = gsap.utils.toArray('.stacked-project-card', scope.current)
+    const panels = cards.map((card) => ({
+      card,
+      copy: card.querySelector('.stacked-project-copy'),
+      visual: card.querySelector('.stacked-project-visual'),
+    }))
     const updateCardHeights = () => {
       const rem = parseFloat(getComputedStyle(document.documentElement).fontSize)
-      cards.forEach((card) => {
+      panels.forEach(({ card, copy, visual }) => {
         card.style.setProperty('--stacked-card-height', `${card.offsetHeight / rem}rem`)
+        card.style.setProperty('--stacked-copy-height', `${copy.offsetHeight / rem}rem`)
+        card.style.setProperty('--stacked-visual-height', `${visual.offsetHeight / rem}rem`)
       })
       ScrollTrigger.refresh()
     }
-    // Tall cards scroll fully into view before sticking, including after resizing or translation.
+    // Measure both panels so mobile copy can scroll over its preview before the card sticks.
     const resizeObserver = new ResizeObserver(updateCardHeights)
-    cards.forEach((card) => resizeObserver.observe(card))
+    panels.forEach(({ card, copy, visual }) => {
+      resizeObserver.observe(card)
+      resizeObserver.observe(copy)
+      resizeObserver.observe(visual)
+    })
     updateCardHeights()
 
     const media = gsap.matchMedia()
-    media.add('(prefers-reduced-motion: no-preference)', () => {
+    media.add({
+      mobile: '(max-width: 48em)',
+      motion: '(prefers-reduced-motion: no-preference)',
+    }, ({ conditions }) => {
+      // Mobile uses nested sticky panels; a transformed parent would move the preview with the copy.
+      if (conditions.mobile || !conditions.motion) return
 
       cards.forEach((card, index) => {
         const inner = card.querySelector('.stacked-project-card__inner')
@@ -70,7 +86,11 @@ export default function StackedProjects() {
     return () => {
       resizeObserver.disconnect()
       media.revert()
-      cards.forEach((card) => card.style.removeProperty('--stacked-card-height'))
+      cards.forEach((card) => {
+        card.style.removeProperty('--stacked-card-height')
+        card.style.removeProperty('--stacked-copy-height')
+        card.style.removeProperty('--stacked-visual-height')
+      })
     }
   }, { scope })
 
