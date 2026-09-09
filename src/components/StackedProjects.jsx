@@ -73,11 +73,11 @@ export default function StackedProjects() {
       cards.forEach((card, index) => {
         const inner = card.querySelector('.stacked-project-card__inner')
         gsap.fromTo(inner,
-          { y: index === 0 ? '0rem' : '6.875rem' },
+          { y: () => index === 0 ? 0 : parseFloat(getComputedStyle(cards[0]).marginBottom) },
           {
-            y: '0rem',
+            y: 0,
             ease: 'none',
-            scrollTrigger: { trigger: card, start: 'top 88%', end: 'top 17%', scrub: .7 },
+            scrollTrigger: { trigger: card, start: 'top 88%', end: 'top 17%', scrub: .7, invalidateOnRefresh: true },
           },
         )
       })
