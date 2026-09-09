@@ -38,16 +38,28 @@ export default function StackedProjects() {
   const scope = useRef(null)
 
   useGSAP(() => {
+    const cards = gsap.utils.toArray('.stacked-project-card', scope.current)
+    const updateCardHeights = () => {
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize)
+      cards.forEach((card) => {
+        card.style.setProperty('--stacked-card-height', `${card.offsetHeight / rem}rem`)
+      })
+      ScrollTrigger.refresh()
+    }
+    // Tall cards scroll fully into view before sticking, including after resizing or translation.
+    const resizeObserver = new ResizeObserver(updateCardHeights)
+    cards.forEach((card) => resizeObserver.observe(card))
+    updateCardHeights()
+
     const media = gsap.matchMedia()
-    media.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
-      const cards = gsap.utils.toArray('.stacked-project-card', scope.current)
+    media.add('(prefers-reduced-motion: no-preference)', () => {
 
       cards.forEach((card, index) => {
         const inner = card.querySelector('.stacked-project-card__inner')
         gsap.fromTo(inner,
-          { y: index === 0 ? 0 : 110 },
+          { y: index === 0 ? '0rem' : '6.875rem' },
           {
-            y: 0,
+            y: '0rem',
             ease: 'none',
             scrollTrigger: { trigger: card, start: 'top 88%', end: 'top 17%', scrub: .7 },
           },
@@ -55,7 +67,11 @@ export default function StackedProjects() {
       })
     })
 
-    return () => media.revert()
+    return () => {
+      resizeObserver.disconnect()
+      media.revert()
+      cards.forEach((card) => card.style.removeProperty('--stacked-card-height'))
+    }
   }, { scope })
 
   return <section className="stacked-projects" id="portfolio" ref={scope} aria-labelledby="stacked-projects-title">
