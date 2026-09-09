@@ -57,7 +57,7 @@ export default function Header() {
         </div>
         <a className="resume-download" href={resumeUrl} target="_blank" rel="noopener noreferrer" aria-label={t('Open resume PDF in a new tab')} title={t('Open resume PDF in a new tab')}><DownloadIcon /></a>
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">{t(menuOpen ? 'Close navigation' : 'Open navigation')}</span></button>
-        <a className="account-button" href="#account" aria-label={t('Account')}><UserIcon /></a>
+        
       </div>
     </div>
     <nav id="mobile-navigation" className={`mobile-navigation ${menuOpen ? 'is-open' : ''}`} aria-label={t('Mobile navigation')}>

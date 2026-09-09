@@ -154,7 +154,7 @@ const uk = {
   'A multilingual corporate platform with structured content, scalable templates, and a responsive interface for an international audience.': 'Багатомовна корпоративна платформа зі структурованим контентом, масштабованими шаблонами й адаптивним інтерфейсом для міжнародної аудиторії.',
   'A restrained portfolio experience that gives artwork center stage through spacious layouts and image-led storytelling.': 'Стримане портфоліо, де мистецтво виходить на перший план завдяки просторим макетам і візуальній розповіді.',
   'A modern software marketing website that presents features and value with clear navigation and approachable visuals.': 'Сучасний маркетинговий сайт програмного продукту зі зрозумілою навігацією та доступною візуальною подачею.',
-  'An AI lead-generation platform with a clear conversion journey, bold product messaging, and a responsive marketing experience built in Framer.': 'AI-платформа для лідогенерації зі зрозумілим шляхом до конверсії, виразною продуктовою комунікацією та адаптивним маркетинговим сайтом на Framer.',
+  'We turn complex ideas into interactive, ultra-fast, and stylish websites on Framer.': 'Перетворюємо складні ідеї на інтерактивні, ультрашвидкі та стильні вебсайти на Framer.',
 }
 
 const getSavedLanguage = () => {

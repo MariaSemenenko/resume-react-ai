@@ -5,10 +5,10 @@
 .stacked-project-list { position: relative; }
 .stacked-project-card { position: sticky; top: min(clamp(5.5rem, 17vh, 9.375rem), calc(100svh - var(--stacked-card-height, 0rem) - 1.5rem)); min-height: min(62vh, 36.25rem); margin-bottom: var(--stacked-project-gap); }
 .stacked-project-card:last-child { margin-bottom: 0; }
-.stacked-project-card__inner { --stacked-card-background: var(--color-surface); height: min(62vh, 36.25rem); min-height: 29.375rem; display: grid; grid-template-columns: minmax(17.5rem, .72fr) minmax(0, 1.45fr); overflow: hidden; isolation: isolate; border: 0.0625rem solid var(--color-border); border-radius: 1.75rem; background: var(--stacked-card-background); box-shadow: var(--stacked-card-shadow); opacity: 1; will-change: transform; }
+.stacked-project-card__inner { --stacked-card-background: var(--color-surface); height: min(62vh, 36.25rem); min-height: 29.375rem; display: grid; grid-template-columns: minmax(17.5rem, .72fr) minmax(0, 1.45fr); overflow: hidden; isolation: isolate; border-radius: 1.75rem; background: var(--stacked-card-background); opacity: 1; will-change: transform; }
 .stacked-project-card:nth-child(even) .stacked-project-card__inner { --stacked-card-background: var(--color-page); }
 .stacked-project-copy { display: flex; flex-direction: column; justify-content: space-between; gap: var(--stacked-project-gap); padding: var(--stacked-card-padding); }
-.stacked-project-meta { display: flex; justify-content: space-between; gap: 1.25rem; color: var(--color-muted); font-size: 0.6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.stacked-project-meta { display: flex; justify-content: space-between; gap: 1.25rem; color: #F725B8; font-size: 0.6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .stacked-project-tools { margin: 0 0 0.9375rem; color: var(--color-accent); font-size: 0.75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .stacked-project-copy h2 { margin: 0; color: var(--color-text); font-size: clamp(2.375rem, 4.5vw, 4.25rem); letter-spacing: -.065em; line-height: .98; }
 .stacked-project-description { max-width: 28.125rem; margin: 1.5rem 0 1.875rem; color: var(--color-muted); font-size: 0.9375rem; line-height: 1.65; }

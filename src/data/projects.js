@@ -1,5 +1,5 @@
 export const projects = [
-  { client: 'Seleqt', title: 'Framer', description: 'An AI lead-generation platform with a clear conversion journey, bold product messaging, and a responsive marketing experience built in Framer.', href: 'https://www.seleqt.ai/', image: '/seleqt-preview.png' },
+  { client: 'Seleqt', title: 'Framer', description: 'We turn complex ideas into interactive, ultra-fast, and stylish websites on Framer.', href: 'https://www.seleqt.ai/', image: '/seleqt-preview.png' },
   { client: 'Joss Home', title: 'WooCommerce ACF Timber Woodmart', description: 'A polished ecommerce experience for a premium home and furniture brand, built around flexible WordPress content and WooCommerce.', href: 'https://joss-home.com/', image: '/joshhome.png' },
   { client: 'ClearCRM', title: 'ACF / Elementor', description: 'A clear, conversion-focused product website with flexible content editing and a responsive Elementor component system.', href: 'https://clearcrm.com/', image: '/clearcrm.png' },
   { client: 'Aquatoria', title: 'Advanced Custom Fields PRO / Teamwork', description: 'A content-rich business website with reusable WordPress sections, multilingual structure, and a carefully balanced visual hierarchy.', href: 'https://aquatoria.kiev.ua/', image: '/aquatoria.png' },
