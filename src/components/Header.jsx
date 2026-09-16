@@ -1,19 +1,11 @@
-﻿import { useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
+import HeaderNavigation from './HeaderNavigation'
 import './Header.css'
 import { useTranslation } from 'react-i18next'
 
 const assetBase = '/images'
 
 const resumeUrl = `${import.meta.env.BASE_URL}${encodeURIComponent('Maria Semenencko  Full Stack Front-end Developer.pdf')}`
-
-const links = [
-  { key: 'Home', href: '/' },
-  { key: 'About', href: '/about' },
-  { key: 'Blog', href: '/blog' },
-  { key: 'Contact', href: '/contact' },
-  { key: 'Portfolio', href: '/portfolio' },
-  { key: 'Solutions', href: '/solutions' },
-]
 
 function DownloadIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M3 12a9 9 0 1 0 18 0" /></svg>
@@ -36,19 +28,42 @@ function FlagIcon({ language }) {
 export default function Header() {
   const { t, i18n } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef(null)
+  const menuToggleRef = useRef(null)
   const closeMenu = () => setMenuOpen(false)
-  const pathname = window.location.pathname.replace(/\/$/, '') || '/'
-  const isActive = (href) => href === '/blog' ? pathname === '/blog' || pathname.startsWith('/blog/') : href.startsWith('/#') ? pathname === '/' && window.location.hash === href.slice(1) : pathname === href
-  const navigationLink = (link, mobile = false) => {
-    const active = isActive(link.href)
-    return <a key={link.key} className={active ? 'is-active' : undefined} href={link.href} aria-current={active ? 'page' : undefined} onClick={mobile ? closeMenu : undefined}>{t(link.key)}</a>
-  }
 
-  return <header className="site-header">
+  useEffect(() => {
+    const breakpoint = window.matchMedia('(max-width: 900px)')
+    const resetMenu = () => setMenuOpen(false)
+    breakpoint.addEventListener('change', resetMenu)
+    return () => breakpoint.removeEventListener('change', resetMenu)
+  }, [])
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const dismissOutside = (event) => {
+      if (!headerRef.current?.contains(event.target)) setMenuOpen(false)
+    }
+    const dismissWithEscape = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+        menuToggleRef.current?.focus()
+      }
+    }
+    document.addEventListener('pointerdown', dismissOutside)
+    document.addEventListener('keydown', dismissWithEscape)
+    return () => {
+      document.removeEventListener('pointerdown', dismissOutside)
+      document.removeEventListener('keydown', dismissWithEscape)
+    }
+  }, [menuOpen])
+
+  return <header ref={headerRef} className="site-header">
     <div className="header-container">
       <a className="header-logo" href="/" aria-label={t('Go to homepage')}><img src={`${assetBase}/flower.png`} alt="" /></a>
       <nav className="desktop-navigation" aria-label={t('Primary navigation')}>
-        {links.map((link) => navigationLink(link))}
+        <HeaderNavigation />
       </nav>
       <div className="header-actions">
         <div className="language-switcher" role="group" aria-label={t('Language')}>
@@ -56,12 +71,14 @@ export default function Header() {
           <button className={i18n.language === 'uk' ? 'is-active' : undefined} type="button" onClick={() => i18n.changeLanguage('uk')} aria-label={t('Switch to Ukrainian')} aria-pressed={i18n.language === 'uk'}><FlagIcon language="uk" /><span></span></button>
         </div>
         <a className="resume-download" href={resumeUrl} target="_blank" rel="noopener noreferrer" aria-label={t('Open resume PDF in a new tab')} title={t('Open resume PDF in a new tab')}><DownloadIcon /></a>
-        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">{t(menuOpen ? 'Close navigation' : 'Open navigation')}</span></button>
+        <button ref={menuToggleRef} className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}><MenuIcon open={menuOpen} /><span className="sr-only">{t(menuOpen ? 'Close navigation' : 'Open navigation')}</span></button>
         
       </div>
     </div>
-    <nav id="mobile-navigation" className={`mobile-navigation ${menuOpen ? 'is-open' : ''}`} aria-label={t('Mobile navigation')}>
-      {links.map((link) => navigationLink(link, true))}
+    <nav id="mobile-navigation" className={`mobile-navigation ${menuOpen ? 'is-open' : ''}`} aria-label={t('Mobile navigation')} inert={!menuOpen} onBlur={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget) && event.relatedTarget !== menuToggleRef.current) closeMenu()
+    }}>
+      {menuOpen && <HeaderNavigation mobile onNavigate={closeMenu} />}
     </nav>
   </header>
 }

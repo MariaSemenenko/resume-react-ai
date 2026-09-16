@@ -2,6 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 const uk = {
+  'Toggle {{section}} submenu': 'Перемкнути підменю «{{section}}»',
   'From concept to launch': 'Від ідеї до запуску',
   'Every project, brought to life.': 'Кожен проєкт оживає.',
   'Explore the Framer, WordPress, and WooCommerce projects behind my work.': 'Перегляньте мої проєкти на Framer, WordPress і WooCommerce.',
