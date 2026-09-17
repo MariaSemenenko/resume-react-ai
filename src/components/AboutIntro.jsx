@@ -4,6 +4,7 @@ import { usePageIntro } from '../hooks/usePageIntro'
 import { useTranslation } from 'react-i18next'
 
 const assetBase = '/images'
+const resumeUrl = `${import.meta.env.BASE_URL}images/${encodeURIComponent('cv.pdf')}`
 
 export default function AboutIntro() {
   const { t } = useTranslation()
@@ -18,7 +19,7 @@ export default function AboutIntro() {
           <p className="about-greeting js-intro-greeting">{t('Hello, I am')} <span className="js-wave about-wave" role="img" aria-label="waving hand">👋</span></p>
           <h1 id="about-title" className="js-intro-title">Maria Semenenko</h1>
           <p className="about-description js-intro-copy">{t('Web Developer and Fullstack. I strive to build immersive, beautiful sites through carefully crafted, user-centric design.')}</p>
-          <div className="about-actions js-intro-actions"><a className="about-download" href="https://dev-08.semenenko.pp.ua/wp-content/uploads/2026/04/Maria-Semenencko-Full-Stack-Front-end-Developer.pdf" target="_blank" rel="noreferrer">{t('Download CV')} <span aria-hidden="true">↓</span></a><a className="about-contact" href="/contact">{t('Contact me')} <span aria-hidden="true">→</span></a></div>
+          <div className="about-actions js-intro-actions"><a className="about-download" href={resumeUrl} target="_blank" rel="noopener noreferrer" aria-label={t('Open resume PDF in a new tab')} title={t('Open resume PDF in a new tab')}>{t('Download CV')} <span aria-hidden="true">↓</span></a><a className="about-contact" href="/contact">{t('Contact me')} <span aria-hidden="true">→</span></a></div>
         </div>
         <div className="about-visual js-intro-visual"><img className="about-flower js-spin" src={`${assetBase}/flower-1.png`} alt="" /><img className="about-image" src={`${assetBase}/aboutM.jpg`} alt="Maria Semenenko" /><span className="about-arrow js-arrow" aria-hidden="true">↝</span></div>
       </div>

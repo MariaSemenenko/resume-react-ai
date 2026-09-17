@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 const assetBase = '/images'
 
-const resumeUrl = `${import.meta.env.BASE_URL}${encodeURIComponent('Maria Semenencko  Full Stack Front-end Developer.pdf')}`
+const resumeUrl = `${import.meta.env.BASE_URL}images/${encodeURIComponent('cv.pdf')}`
 
 function DownloadIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M3 12a9 9 0 1 0 18 0" /></svg>
