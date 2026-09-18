@@ -14,7 +14,6 @@ export default function SeleqtPreview({ project }) {
   const [ready, setReady] = useState(false)
   const [visible, setVisible] = useState(false)
   const [pageVisible, setPageVisible] = useState(true)
-  const [paused, setPaused] = useState(false)
 
   useEffect(() => {
     const element = scene.current
@@ -39,7 +38,7 @@ export default function SeleqtPreview({ project }) {
   return <div
     ref={scene}
     className="solution-preview seleqt-preview"
-    data-running={ready && visible && pageVisible && !paused}
+    data-running={ready && visible && pageVisible}
   >
     <div className="seleqt-preview__halo" data-layer="halo" aria-hidden="true" />
     {details.map(({ side, image }) => <div
@@ -66,16 +65,5 @@ export default function SeleqtPreview({ project }) {
       <span>{t('Built with')}</span>
       <strong>{project.title}</strong>
     </div>
-    <button
-      className="seleqt-preview__toggle"
-      type="button"
-      aria-label={t('Pause animation')}
-      aria-pressed={paused}
-      onClick={() => setPaused((value) => !value)}
-    >
-      <svg viewBox="0 0 20 20" aria-hidden="true">
-        {paused ? <path d="m7 4 9 6-9 6Z" /> : <path d="M6 4h3v12H6zm5 0h3v12h-3z" />}
-      </svg>
-    </button>
   </div>
 }
