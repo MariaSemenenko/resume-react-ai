@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { projects } from '../../data/projects'
 import ProjectTabs from './ProjectTabs'
 import ProjectPreview from './ProjectPreview'
+import SeleqtPreview from './SeleqtPreview'
 import './SolutionsShowcase.css'
 
 function ArrowIcon() {
@@ -13,7 +14,7 @@ export default function SolutionsShowcase() {
 
   return <ProjectTabs
     projects={projects}
-    renderPreview={(project, index) => <ProjectPreview
+    renderPreview={(project, index) => index === 0 ? <SeleqtPreview project={project} /> : <ProjectPreview
       project={project}
       previousProject={projects[(index - 1 + projects.length) % projects.length]}
       nextProject={projects[(index + 1) % projects.length]}
