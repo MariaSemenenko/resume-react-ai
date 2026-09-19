@@ -1,5 +1,4 @@
 .portfolio-reel {
-  padding: clamp(72px, 8vw, 128px) 0 clamp(40px, 5vw, 72px);
   color: var(--color-text);
   background: var(--color-page);
 }

@@ -124,17 +124,7 @@ export function ReelVideo({ src, mobileSrc, poster, mobilePoster, label }) {
       />}
     </div>
     <figcaption className="portfolio-reel__caption">
-      <div className="portfolio-reel__playback">
-        {!failed && <button
-          type="button"
-          className="portfolio-reel__toggle"
-          aria-controls={videoId}
-          onClick={togglePlayback}
-        >
-          <PlaybackIcon playing={playing} />
-        </button>}
-        <span className="portfolio-reel__duration" aria-label={t('12-second portfolio reel')}>00:12</span>
-      </div>
+ 
       <a className="portfolio-reel__link" href="/portfolio">
         {t('Explore portfolio')}
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg>
