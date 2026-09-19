@@ -2,6 +2,12 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 const uk = {
+  'Portfolio reel': 'Відеодобірка проєктів',
+  'Play reel': 'Відтворити відео',
+  'Pause reel': 'Призупинити відео',
+  '12-second portfolio reel': '12-секундна відеодобірка проєктів',
+  'The video is unavailable. Explore the projects in my portfolio.': 'Відео недоступне. Перегляньте проєкти в моєму портфоліо.',
+
   'Toggle {{section}} submenu': 'Перемкнути підменю «{{section}}»',
   'From concept to launch': 'Від ідеї до запуску',
   'Every project, brought to life.': 'Кожен проєкт оживає.',
