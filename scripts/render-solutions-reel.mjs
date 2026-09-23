@@ -43,13 +43,8 @@ function composition(width, height) {
   html,body{width:${width}px;height:${height}px;overflow:hidden}
   body{margin:0;font-family:Manrope,Arial,sans-serif}
   .film{position:relative;width:100%;height:100%;overflow:hidden;background:var(--color-page)}
-  .wash{position:absolute;inset:0;background:radial-gradient(ellipse at 46% 40%,var(--color-accent-soft),transparent 62%),radial-gradient(ellipse at 86% 90%,color-mix(in srgb,var(--color-highlight) 12%,transparent),transparent 45%)}
-  .identity{position:absolute;top:54px;left:68px;display:flex;align-items:center;gap:18px}
-  .monogram{display:grid;place-items:center;width:54px;height:54px;border-radius:17px;background:var(--color-accent);color:var(--color-on-accent);font-weight:700;font-size:23px;letter-spacing:-2px}
-  .name{font-size:20px;font-weight:600;letter-spacing:-.6px}
-  .edition{position:absolute;right:68px;top:74px;font-size:15px;letter-spacing:4px;color:var(--color-muted)}
   .scene{position:absolute;inset:0;perspective:2200px}
-  .window{position:absolute;left:0;top:0;overflow:hidden;border-radius:22px;padding:9px;background:var(--color-page);border:1px solid color-mix(in srgb,var(--color-border) 70%,transparent);box-shadow:0 26px 75px color-mix(in srgb,var(--color-accent) 13%,transparent),0 4px 12px color-mix(in srgb,var(--color-text) 8%,transparent);transform-origin:50% 50%}
+  .window{position:absolute;left:0;top:0;overflow:hidden;border-radius:22px;padding:9px;background:var(--color-page);border:1px solid color-mix(in srgb,var(--color-border) 70%,transparent);transform-origin:50% 50%}
   .chrome{display:flex;align-items:center;height:44px;padding:0 14px;gap:7px}
   .dot{width:7px;height:7px;border-radius:50%;background:var(--color-border)}
   .address{margin:0 auto;padding-right:37px;font-size:14px;color:var(--color-muted)}
@@ -58,18 +53,15 @@ function composition(width, height) {
   .caption{display:flex;justify-content:space-between;align-items:center;height:54px;padding:0 14px;gap:12px}
   .client{font-size:19px;font-weight:700;letter-spacing:-.5px;white-space:nowrap}
   .tech{font-size:12px;color:var(--color-muted)}
-  .badge{position:absolute;display:flex;align-items:center;gap:15px;padding:18px 24px;border-radius:18px;background:var(--color-page);border:1px solid var(--color-border);box-shadow:var(--shadow-preview)}
+  .badge{position:absolute;display:flex;align-items:center;gap:15px;padding:18px 24px;border-radius:18px;background:var(--color-page);border:1px solid var(--color-border)}
   .badge-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--color-accent-soft);color:var(--color-accent);font-size:23px}
   .badge-copy{font-size:19px;font-weight:600;letter-spacing:-.5px}
   .badge-sub{display:block;margin-top:3px;font-size:12px;font-weight:400;color:var(--color-muted);letter-spacing:0}
-  .platforms{position:absolute;bottom:49px;left:0;width:100%;display:flex;justify-content:center;align-items:center;gap:17px;font-size:17px;color:var(--color-muted)}
-  .platforms i{display:block;width:4px;height:4px;border-radius:50%;background:var(--color-highlight)}
-  .portrait .identity{top:39px;left:40px}.portrait .edition{top:58px;right:40px;font-size:12px;letter-spacing:2px}.portrait .platforms{bottom:36px}
+  .film,.window,.badge{background:var(--color-page)}
+  .window,.badge{box-shadow:none}
   </style></head><body class="theme-light"><div class="film ${width < height ? 'portrait' : ''}">
-  <div class="wash"></div><div class="identity"><span class="monogram">MS.</span><span class="name">Maria Semenenko</span></div>
-  <span class="edition">PORTFOLIO / 01</span><div class="scene"></div>
+  <div class="scene"></div>
   <div class="badge"><span class="badge-mark">↗</span><span class="badge-copy"></span></div>
-  <div class="platforms"><span>Framer</span><i></i><span>WordPress</span><i></i><span>WooCommerce</span></div>
   </div><script>
   const projects=${JSON.stringify(projects).replaceAll('<', '\\u003c')};
   const width=${width},height=${height},portrait=width<height;
@@ -92,16 +84,16 @@ function composition(width, height) {
   function layout(mode,i){
     const focus=mode===0?0:mode===1?2:mode===2?1:-1;
     if(mode===3){
-      if(portrait)return{x:53+(i%2)*448,y:150+Math.floor(i/2)*225,w:406,h:207,r:0,ry:0,o:1,z:1};
-      return{x:110+(i%4)*434,y:190+Math.floor(i/4)*356,w:398,h:312,r:0,ry:0,o:1,z:1};
+      if(portrait)return{x:53+(i%2)*448,y:159+Math.floor(i/2)*225,w:406,h:207,r:0,ry:0,o:1,z:1};
+      return{x:110+(i%4)*434,y:206+Math.floor(i/4)*356,w:398,h:312,r:0,ry:0,o:1,z:1};
     }
     if(i===focus){
       const w=portrait?(focus===0?820:650):(focus===0?1130:780),h=portrait?(focus===0?670:720):(focus===0?720:740);
-      return{x:(width-w)/2+(portrait?0:focus===2?-65:focus===1?70:0),y:portrait?230:160,w,h,r:mode===0?-1.5:mode===1?1.5:-1,ry:portrait?0:mode===0?-5:mode===1?6:-4,o:1,z:10};
+      return{x:(width-w)/2,y:(height-h)/2,w,h,r:0,ry:0,o:1,z:10};
     }
     const order=[0,2,1,5,7,3,4,6].filter(n=>n!==focus),slot=order.indexOf(i),left=slot%2===0,row=Math.floor(slot/2);
-    if(portrait)return{x:left?-145:650,y:340+row*190,w:450,h:390,r:left?-9:9,ry:0,o:slot<2?.75:0,z:2};
-    return{x:left?90+row*20:1415-row*20,y:245+row*100,w:415,h:440,r:left?-8-row*2:8+row*2,ry:left?9:-9,o:slot<2?.94:slot<4?.36:0,z:5-slot};
+    if(portrait)return{x:left?-145:655,y:(height-390)/2+row*50,w:450,h:390,r:left?-9:9,ry:0,o:slot<2?.75:0,z:2};
+    return{x:left?90+row*20:1415-row*20,y:(height-440)/2+row*50,w:415,h:440,r:left?-8-row*2:8+row*2,ry:left?9:-9,o:slot<2?.94:slot<4?.36:0,z:5-slot};
   }
   const stops=[{t:0,mode:0},{t:2.4,mode:0},{t:3.35,mode:1},{t:5.15,mode:1},{t:6.1,mode:2},{t:7.8,mode:2},{t:8.8,mode:3},{t:10.6,mode:3},{t:12,mode:0}];
   window.renderFrame=time=>{
@@ -110,7 +102,7 @@ function composition(width, height) {
     cards.forEach((card,i)=>{
       const from=layout(a.mode,i),to=layout(b.mode,i),v={};
       for(const key of ['x','y','w','h','r','ry','o'])v[key]=mix(from[key],to[key],p);
-      const drift=a.mode===b.mode&&a.mode!==3?Math.sin((time-a.t)*Math.PI/(b.t-a.t))*4:0;
+      const drift=0;
       card.style.width=v.w+'px';card.style.height=v.h+'px';card.style.opacity=v.o;card.style.zIndex=p<.5?from.z:to.z;
       card.style.transform='translate3d('+v.x+'px,'+(v.y+drift)+'px,0) rotate('+v.r+'deg) rotateY('+v.ry+'deg)';
       const grid=mix(a.mode===3?1:0,b.mode===3?1:0,p);card.querySelector('.tech').style.opacity=1-grid;
@@ -119,8 +111,8 @@ function composition(width, height) {
     const mode=p<.5?a.mode:b.mode,labels=['Seleqt','ClearCRM','Joss Home','Maria Semenenko'],sub=['Framer','WordPress · Elementor','WooCommerce','Framer · WordPress · WooCommerce'];
     const badge=document.querySelector('.badge'),copy=badge.querySelector('.badge-copy');copy.textContent=labels[mode];
     const small=document.createElement('span');small.className='badge-sub';small.textContent=sub[mode];copy.append(small);
-    badge.style.left=(portrait?width/2:mode===3?width/2:1240)+'px';
-    badge.style.transform=(portrait||mode===3)?'translateX(-50%)':'none';badge.style.top=(portrait?mode===3?1047:915:mode===3?895:805)+'px';badge.style.opacity=a.mode!==b.mode?Math.abs(p-.5)*2:1;
+    badge.style.left=(width/2)+'px';
+    badge.style.transform='translateX(-50%)';const featured=layout(mode,mode===0?0:mode===1?2:1);badge.style.top=(mode===3?height-120:featured.y+featured.h+20)+'px';badge.style.opacity=mode===3?0:a.mode!==b.mode?Math.abs(p-.5)*2:1;
   };
   window.ready=Promise.all([...document.images].map(image=>image.decode())).then(()=>document.fonts.ready);
   window.renderFrame(0);
@@ -139,15 +131,32 @@ try {
     const page = await browser.newPage({viewport:{width,height},deviceScaleFactor:1})
     await page.setContent(composition(width,height), {waitUntil:'networkidle'})
     await page.evaluate(()=>window.ready)
+
+    const review = await page.evaluate(({width,height}) => {
+      const samples = []
+      for (const [time,index] of [[0,0],[1,0],[4,2],[7,1]]) {
+        window.renderFrame(time)
+        const card = document.querySelectorAll('.window')[index]
+        const bounds = card.getBoundingClientRect()
+        samples.push({time,centerX:bounds.x+bounds.width/2,centerY:bounds.y+bounds.height/2,shadow:getComputedStyle(card).boxShadow})
+      }
+      const edgesHidden = !document.querySelector('.identity,.edition,.platforms,.wash')
+      return {width,height,samples,edgesHidden,background:getComputedStyle(document.querySelector('.film')).backgroundColor}
+    },{width,height})
+    if(!review.edgesHidden || review.background !== 'rgb(255, 255, 255)' ||
+      review.samples.some(sample=>Math.abs(sample.centerX-width/2)>.01 || Math.abs(sample.centerY-height/2)>.01 || sample.shadow!=='none')) {
+      throw new Error('Clean composition validation failed: '+JSON.stringify(review))
+    }
+    console.log('Verified clean composition: '+JSON.stringify(review))
     await page.evaluate(()=>window.renderFrame(1))
-    await encode(['-f','image2pipe','-i','pipe:0','-frames:v','1','-c:v','libwebp','-quality','92',join(imageDir,'portfolio-reel'+suffix+'.webp')],await page.screenshot())
+    await encode(['-f','image2pipe','-i','pipe:0','-frames:v','1','-c:v','libwebp','-quality','92',join(imageDir,'portfolio-reel'+suffix+'-clean.webp')],await page.screenshot())
     if(process.argv.includes('--preview')) {
       for(const time of [0,4,7,10]) {
         await page.evaluate(t=>window.renderFrame(t),time)
-        await writeFile(join(process.env.TEMP || videoDir,'reel-storyboard'+suffix+'-'+time+'.png'),await page.screenshot())
+        await writeFile(join(process.env.TEMP || videoDir,'reel-clean-storyboard'+suffix+'-'+time+'.png'),await page.screenshot())
       }
     } else {
-      const encoder=spawn(processEnvFfmpeg(),['-y','-loglevel','error','-f','image2pipe','-framerate','30','-vcodec','mjpeg','-i','pipe:0','-an','-c:v','libx264','-preset','slow','-crf','18','-vf','scale=in_range=pc:out_range=tv:out_color_matrix=bt709,format=yuv420p','-pix_fmt','yuv420p','-color_range','tv','-colorspace','bt709','-color_trc','bt709','-color_primaries','bt709','-movflags','+faststart',join(videoDir,'solutions-portfolio'+suffix+'.mp4')],{windowsHide:true,stdio:['pipe','inherit','inherit']})
+      const encoder=spawn(processEnvFfmpeg(),['-y','-loglevel','error','-f','image2pipe','-framerate','30','-vcodec','mjpeg','-i','pipe:0','-an','-c:v','libx264','-preset','medium','-threads','4','-crf','18','-vf','scale=in_range=pc:out_range=tv:out_color_matrix=bt709,format=yuv420p','-pix_fmt','yuv420p','-color_range','tv','-colorspace','bt709','-color_trc','bt709','-color_primaries','bt709','-movflags','+faststart',join(videoDir,'solutions-portfolio'+suffix+'-clean.mp4')],{windowsHide:true,stdio:['pipe','inherit','inherit']})
       const completion=once(encoder,'close')
       encoder.stdin.on('error',error=>console.error(error.message))
       for(let frame=0;frame<360;frame++) {
@@ -159,7 +168,7 @@ try {
       encoder.stdin.end()
       const [code]=await completion
       if(code!==0)throw new Error('Video encoding failed: '+code)
-      console.log('Rendered solutions-portfolio'+suffix+'.mp4')
+      console.log('Rendered solutions-portfolio'+suffix+'-clean.mp4')
     }
     await page.close()
   }

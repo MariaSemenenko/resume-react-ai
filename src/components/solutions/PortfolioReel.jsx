@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import ReelAccents from './ReelAccents'
 import './PortfolioReel.css'
 
 function PlaybackIcon({ playing }) {
@@ -122,6 +123,7 @@ export function ReelVideo({ src, mobileSrc, poster, mobilePoster, label }) {
         onPause={() => setPlaying(false)}
         onError={() => { setFailed(true); setPlaying(false) }}
       />}
+      <ReelAccents />
     </div>
     <figcaption className="portfolio-reel__caption">
  
@@ -145,10 +147,10 @@ export default function PortfolioReel() {
         <p className="portfolio-reel__intro">{t('Explore the Framer, WordPress, and WooCommerce projects behind my work.')}</p>
       </div>
       <ReelVideo
-        src="/videos/solutions-portfolio.mp4"
-        mobileSrc="/videos/solutions-portfolio-mobile.mp4"
-        poster="/images/solutions/portfolio-reel.webp"
-        mobilePoster="/images/solutions/portfolio-reel-mobile.webp"
+        src="/videos/solutions-portfolio-clean.mp4"
+        mobileSrc="/videos/solutions-portfolio-mobile-clean.mp4"
+        poster="/images/solutions/portfolio-reel-clean.webp"
+        mobilePoster="/images/solutions/portfolio-reel-mobile-clean.webp"
         label={t('Portfolio reel')}
       />
     </div>
