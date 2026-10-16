@@ -145,8 +145,8 @@ export default function PortfolioReel() {
         <p className="portfolio-reel__intro">{t('Explore the Framer, WordPress, and WooCommerce projects behind my work.')}</p>
       </div>
       <ReelVideo
-        src="/videos/solutions-portfolio.mp4"
-        mobileSrc="/videos/solutions-portfolio-mobile.mp4"
+        src="/videos/solutions-portfolio-white-centered.mp4"
+        mobileSrc="/videos/solutions-portfolio-mobile-white-centered.mp4"
         poster="/images/solutions/portfolio-reel.webp"
         mobilePoster="/images/solutions/portfolio-reel-mobile.webp"
         label={t('Portfolio reel')}

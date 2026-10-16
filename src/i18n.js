@@ -162,6 +162,7 @@ const uk = {
   'A restrained portfolio experience that gives artwork center stage through spacious layouts and image-led storytelling.': 'Стримане портфоліо, де мистецтво виходить на перший план завдяки просторим макетам і візуальній розповіді.',
   'A modern software marketing website that presents features and value with clear navigation and approachable visuals.': 'Сучасний маркетинговий сайт програмного продукту зі зрозумілою навігацією та доступною візуальною подачею.',
   'We turn complex ideas into interactive, ultra-fast, and stylish websites on Framer.': 'Перетворюємо складні ідеї на інтерактивні, ультрашвидкі та стильні вебсайти на Framer',
+  'A website built with Elementor for great business ideas': 'Сайт на Елементорі для гарних бізнес ідей',
 }
 
 const getSavedLanguage = () => {

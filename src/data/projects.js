@@ -7,4 +7,5 @@ export const projects = [
   { client: 'Transcontrol', title: 'ACF PRO / WPML / Teamwork', description: 'A multilingual corporate platform with structured content, scalable templates, and a responsive interface for an international audience.', href: 'https://transcontrol.com.ua/', image: '/images/trans.png' },
   { client: 'Amy Kann Sculptor', title: 'Elementor', description: 'A restrained portfolio experience that gives artwork center stage through spacious layouts and image-led storytelling.', href: 'https://www.amykannsculptor.com/', image: '/images/aykannsculptor.png' },
   { client: 'Easybooks', title: 'Elementor', description: 'A modern software marketing website that presents features and value with clear navigation and approachable visuals.', href: 'https://easybooks.software/', image: '/images/easybooks.png' },
+  { client: 'Leadquizzes', title: 'Elementor', description: 'A website built with Elementor for great business ideas', href: 'https://www.leadquizzes.com/', image: '/images/lead.png' },
 ]
