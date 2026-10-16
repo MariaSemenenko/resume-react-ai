@@ -6,20 +6,20 @@ const defaultImage = '/images/aboutM.jpg'
 
 const pages = {
   '/': {
-    title: 'Mariia Semenenko | CV & Fullstack Developer',
-    description: 'View the CV and portfolio of Maria Semenenko, Fullstack Developer. Explore WordPress, WooCommerce, React, Laravel and Framer projects.',
+    title: 'Mariia Semenenko | CV | Fullstack Developer',
+    description: 'View the CV and portfolio of Mariia Semenenko, Fullstack Developer. Explore WordPress, WooCommerce, React, Laravel and Framer projects.',
   },
   '/about': {
     title: 'About Mariia Semenenko | CV ',
-    description: 'Meet Maria Semenenko, CV & Fullstack Developer creating immersive, carefully crafted websites. Learn about her work and download her CV.',
+    description: 'Meet Mariia Semenenko, CV & Fullstack Developer creating immersive, carefully crafted websites. Learn about her work and download her CV.',
   },
   '/contact': {
     title: 'Contact Mariia Semenenko | CV & Fullstack Developer',
-    description: 'Contact Maria Semenenko CV to discuss your next website, WordPress, or ecommerce project. Based in Ukraine and working with clients worldwide.',
+    description: 'Contact Mariia Semenenko CV to discuss your next website, WordPress, or ecommerce project. Based in Ukraine and working with clients worldwide.',
   },
   '/portfolio': {
     title: 'Portfolio | Mariia Semenenko CV ',
-    description: 'Explore CV & selected WordPress, WooCommerce, Framer, and product websites by Maria Semenenko, built around real business goals.',
+    description: 'Explore CV & selected WordPress, WooCommerce, Framer, and product websites by Mariia Semenenko, built around real business goals.',
   },
   '/solutions': {
     title: 'Fullstack Developer Solutions | Mariia Semenenko',
@@ -27,7 +27,7 @@ const pages = {
   },
   '/blog': {
     title: 'WordPress Development Blog | CV & Mariia Semenenko',
-    description: 'Read WordPress development notes, custom plugin tutorials, and WooCommerce builds by Maria Semenenko.',
+    description: 'Read WordPress development notes, custom plugin tutorials, and WooCommerce builds by Mariia Semenenko.',
   },
   ...Object.fromEntries(blogPosts.map((post) => [`/blog/${post.slug}`, {
     title: `${post.title} | ${siteName}`,
