@@ -1,32 +1,32 @@
 import { blogPosts } from './src/data/blogPosts.js'
 
 const siteUrl = 'https://cv-s.vercel.app'
-const siteName = 'Maria Semenenko'
+const siteName = 'Mariia Semenenko'
 const defaultImage = '/images/aboutM.jpg'
 
 const pages = {
   '/': {
-    title: 'Maria Semenenko | WordPress & Fullstack Web Developer',
-    description: 'Maria Semenenko, a web developer based in Ukraine. Explore WordPress, WooCommerce, and Framer projects, development solutions, and custom plugins.',
+    title: 'Mariia Semenenko | CV & Fullstack Developer',
+    description: 'View the CV and portfolio of Maria Semenenko, Fullstack Developer. Explore WordPress, WooCommerce, React, Laravel and Framer projects.',
   },
   '/about': {
-    title: 'About Maria Semenenko | Web Developer',
-    description: 'Meet Maria Semenenko, a fullstack web developer creating immersive, carefully crafted websites. Learn about her work and download her CV.',
+    title: 'About Mariia Semenenko | CV ',
+    description: 'Meet Maria Semenenko, CV & Fullstack Developer creating immersive, carefully crafted websites. Learn about her work and download her CV.',
   },
   '/contact': {
-    title: 'Contact Maria Semenenko | Web Developer',
-    description: 'Contact Maria Semenenko to discuss your next website, WordPress, or ecommerce project. Based in Ukraine and working with clients worldwide.',
+    title: 'Contact Mariia Semenenko | CV & Fullstack Developer',
+    description: 'Contact Maria Semenenko CV to discuss your next website, WordPress, or ecommerce project. Based in Ukraine and working with clients worldwide.',
   },
   '/portfolio': {
-    title: 'Portfolio | Maria Semenenko',
-    description: 'Explore selected WordPress, WooCommerce, Framer, and product websites by Maria Semenenko, built around real business goals.',
+    title: 'Portfolio | Mariia Semenenko CV ',
+    description: 'Explore CV & selected WordPress, WooCommerce, Framer, and product websites by Maria Semenenko, built around real business goals.',
   },
   '/solutions': {
-    title: 'Web Development Solutions | Maria Semenenko',
-    description: 'Discover web solutions by Maria Semenenko, including Seleqt, ClearCRM, and Joss Home, built with Framer, WordPress, and WooCommerce.',
+    title: 'Fullstack Developer Solutions | Mariia Semenenko',
+    description: 'Discover web solutions by Mariia Semenenko, including Seleqt, ClearCRM, and Joss Home, built with Framer, WordPress, and WooCommerce.',
   },
   '/blog': {
-    title: 'WordPress Development Blog | Maria Semenenko',
+    title: 'WordPress Development Blog | CV & Mariia Semenenko',
     description: 'Read WordPress development notes, custom plugin tutorials, and WooCommerce builds by Maria Semenenko.',
   },
   ...Object.fromEntries(blogPosts.map((post) => [`/blog/${post.slug}`, {
@@ -51,11 +51,17 @@ function withSeo(html, pathname) {
     `<meta name="robots" content="${page ? 'index, follow, max-image-preview:large' : 'noindex, follow'}" />`,
   ]
 
+  
   if (page) {
-    const canonical = siteUrl + pathname
-    const image = siteUrl + (page.image ?? defaultImage)
+    const canonical = new URL(pathname, siteUrl).href
+    const image = new URL(
+      page.image ?? defaultImage,
+      siteUrl
+    ).href
+
     const imageAlt = escapeHtml(page.imageAlt ?? siteName)
     const description = escapeHtml(page.description)
+
     tags.push(
       `<meta name="description" content="${description}" />`,
       `<link rel="canonical" href="${canonical}" />`,
@@ -73,13 +79,21 @@ function withSeo(html, pathname) {
       `<meta name="twitter:image" content="${image}" />`,
       `<meta name="twitter:image:alt" content="${imageAlt}" />`,
     )
+
     if (page.published) {
-      tags.push(`<meta property="article:published_time" content="${page.published}" />`)
+      tags.push(
+        `<meta property="article:published_time" content="${escapeHtml(page.published)}" />`
+      )
     }
   }
 
-  return html.replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/,
-    `<!-- seo:start -->\n    ${tags.join('\n    ')}\n    <!-- seo:end -->`)
+
+  return html.replace(
+  /<!-- seo:start -->[\s\S]*?<!-- seo:end -->/,
+  `<!-- seo:start -->
+    ${tags.join('\n    ')}
+    <!-- seo:end -->`
+)
 }
 
 // Emit route-specific heads while keeping the existing React body and assets.
